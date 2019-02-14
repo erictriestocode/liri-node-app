@@ -3,17 +3,31 @@
 require("dotenv").config();
 var keys = require("./keys.js");
 
-var input = process.argv[2];
+var input = process.argv;
+var inputLength = process.argv.length - 2;
 
 
+console.log("***** WELCOME TO LIRI *****");
+console.log("you have entered: " + input[2] + " and " + input[3]);
+console.log("You have this many inputs: " + inputLength);
 
+if (input[2] === ){
 
+}
+if (input[2] === ){
 
+}
+if (input[2] === ){
+
+}
+if (input[2] === ){
+
+}
 
 
 //  ***** FUNCTIONS *****
 
-// Function for searching for concerts 
+// Function for searching for concerts
 function concertSearch(artist){
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
     .then( function(response){
@@ -32,14 +46,14 @@ function spotifySearch(){
 }
 
 // function for searching for Movies on OMDB
-function movieSearch(){
-if(){
-    // get OMDB info using axios
-} else {
-    console.log("If you haven't watched 'Mr. Nobody,' then you should: <http://www.imdb.com/title/tt0485947/>");
-    console.log("It's on Netflix!");
-}
-}
+// function movieSearch(){
+// if(){
+//     // get OMDB info using axios
+// } else {
+//     console.log("If you haven't watched 'Mr. Nobody,' then you should: <http://www.imdb.com/title/tt0485947/>");
+//     console.log("It's on Netflix!");
+// }
+// }
 
 //  function for doing what it says
 function alfred(){
