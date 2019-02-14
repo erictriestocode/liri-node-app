@@ -7,21 +7,21 @@ var input = process.argv;
 var inputLength = process.argv.length - 2;
 
 
-console.log("***** WELCOME TO LIRI *****");
-console.log("you have entered: " + input[2] + " and " + input[3]);
-console.log("You have this many inputs: " + inputLength);
+console.log("DEBUG: ***** WELCOME TO LIRI *****");
+console.log("DEBUG: you have entered: " + input[2] + " and " + input[3]);
+console.log("DEBUG: You have this many inputs: " + inputLength);
 
-if (input[2] === ){
-
+if (input[2] === "concert-this"){
+    console.log("Concerts!")
 }
-if (input[2] === ){
-
+if (input[2] === "spotify-this-song"){
+    console.log("Spotify!")
 }
-if (input[2] === ){
-
+if (input[2] === "movie-this" ){
+    console.log("Movies?")
 }
-if (input[2] === ){
-
+if (input[2] === "do-what-it-says"){
+    console.log("DO MY WORK BITCH")
 }
 
 
