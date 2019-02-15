@@ -2,6 +2,7 @@
 // Requirement as specified in the instructions
 require("dotenv").config();
 var keys = require("./keys.js");
+var axios = require("axios");
 
 var input = process.argv;
 var inputLength = process.argv.length - 2; //subtracting first two arguments(node path and file path)
@@ -12,22 +13,21 @@ console.log("DEBUG: you have entered: " + input[2] + " and " + input[3]);
 console.log("DEBUG: You have this many inputs: " + inputLength);
 
 // If statements to parse input and direct to the correct functions
+// Guess I could have used a while loop here ¯\_(ツ)_/¯
 
 if (input[2] === "concert-this") {
-    console.log("Concerts!")
+    console.log("DEBUG: Concerts!")
     var band = "blink-182";
     concertSearch(band);
 }
 if (input[2] === "spotify-this-song") {
-    console.log("Spotify!")
+    console.log("DEBUG: Spotify!")
 }
 if (input[2] === "movie-this") {
-    console.log("Movies?")
+    console.log("DEBUG: Movies?")
 }
 if (input[2] === "do-what-it-says") {
-    console.log("DO MY WORK BITCH")
-} else {
-    console.log("Guess you dont want me to do SHIT! Go to Google Assistant or Alexa or Siri(lol)")
+    console.log("DEBUG: DO MY WORK BITCH")
 }
 
 
@@ -35,15 +35,24 @@ if (input[2] === "do-what-it-says") {
 
 // Function for searching for concerts
 function concertSearch(artist) {
+    var venueName;
+    var venueLocation;
+    var concertdate;
+
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
         .then(function(response) {
-            console.log(response);
+            // console.log(response);
+            venueName = response.id;
+            // venueLocationc = response.data.
+                console.log("Response is: " + venueName);
+
             // console Name of Venue
             // console venue location
             // console date of the event
         }).catch(function(error) {
             console.log(error);
         });
+
 }
 
 // FUnction for searching for songs on Spotify
@@ -53,12 +62,20 @@ function spotifySearch() {
 
 // function for searching for Movies on OMDB
 function movieSearch() {
-    // if(){
-    //     // get OMDB info using axios
-    // } else {
-    //     console.log("If you haven't watched 'Mr. Nobody,' then you should: <http://www.imdb.com/title/tt0485947/>");
-    //     console.log("It's on Netflix!");
-    // }
+
+
+    // Taken largely from 10.2 levelTwoOmdbInteractive.js activity, modified for the homework
+
+    // var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
+
+    // // This line is just to help us debug against the actual URL.
+    // console.log(queryUrl);
+
+    // axios.get(queryUrl).then(
+    //     function(response) {
+    //         console.log("Release Year: " + response.data.Year);
+    //     }
+
 }
 
 //  function for doing what it says
