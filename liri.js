@@ -1,8 +1,11 @@
 // MAIN APP FILE!!!
+// ********************************************
+
 // Requirement as specified in the instructions
 require("dotenv").config();
 var keys = require("./keys.js");
 var axios = require("axios");
+var fs = require("fs");
 
 var input = process.argv;
 var inputLength = process.argv.length - 2; //subtracting first two arguments(node path and file path)
@@ -13,11 +16,11 @@ console.log("DEBUG: you have entered: " + input[2] + " and " + input[3]);
 console.log("DEBUG: You have this many inputs: " + inputLength);
 
 // If statements to parse input and direct to the correct functions
-// Guess I could have used a while loop here ¯\_(ツ)_/¯
+// Guess I could have used switch statements here ¯\_(ツ)_/¯
 
 if (input[2] === "concert-this") {
     console.log("DEBUG: Concerts!")
-    var band = "blink-182";
+    var band = "queen";
     concertSearch(band);
 }
 if (input[2] === "spotify-this-song") {
@@ -38,6 +41,8 @@ function concertSearch(artist) {
     var venueName;
     var venueLocation;
     var concertdate;
+
+    console.log("DEBUG: you have entered: " + artist)
 
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
         .then(function(response) {
