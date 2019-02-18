@@ -165,6 +165,7 @@ function randomFile(butler) {
         var newCommand = "node liri.js " + fileInput[0] + " " + fileInput[1];
 
         console.log(topLine);
+        console.log("DEBUG: BETA FEATURE NOT YET FULLY WORKING!")
         console.log("DEBUG: Command Generated: " + newCommand);
         console.log(bottomLine);
         // appLogic(fileInput[0]);
