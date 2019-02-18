@@ -35,6 +35,7 @@ if (input[2] === "spotify-this-song") {
 }
 if (input[2] === "movie-this") {
     console.log("DEBUG: Movies?")
+    movieSearch(userInput);
 }
 if (input[2] === "do-what-it-says") {
     console.log("DEBUG: DO MY WORK BITCH")
@@ -82,7 +83,7 @@ function spotifySearch(song) {
 
 
     if (!userSong) {
-        userSong = "Ace of Bass" //I think this is spelled properly? If only there was a website I could go to and check. Discussed in class that using the band name instead actually gave the desired results.
+        userSong = "Ace of Base" // Discussed in class that using the band name instead actually gave the desired results.
     }
 
     // From Spotify Node API Documentation
@@ -112,19 +113,31 @@ function spotifySearch(song) {
 
 // function for searching for Movies on OMDB
 function movieSearch(movie) {
-
+    // Taken heavily from 10.2 levelTwoOmdbInteractive.js activity and modified for this assignment
     var movieInput = movie;
-    // Taken largely from 10.2 levelTwoOmdbInteractive.js activity, modified for the homework
 
-    // var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
+    if(!movieInput){
+        movieInput = "xXx";
+    }
 
-    // // This line is just to help us debug against the actual URL.
-    // console.log(queryUrl);
+    var queryUrl = "http://www.omdbapi.com/?t=" + movieInput + "&y=&plot=short&apikey=trilogy";
 
-    // axios.get(queryUrl).then(
-    //     function(response) {
-    //         console.log("Release Year: " + response.data.Year);
-    //     }
+    console.log(queryUrl);
+
+    axios.get(queryUrl).then(
+        function (response) {
+            // Again, a lot of extra code but I like the readability better
+            console.log(topLine);
+            console.log("MOVIE TITLE: " + response.data.Title);
+            console.log("MOVIE YEAR: " + response.data.Year);
+            console.log("IMDB RATING: " + response.data.Ratings[0].Value);
+            console.log("ROTTEN TOMATOES RATING: " + response.data.Ratings[1].Value);
+            console.log("PRODUCTION COUNTRY: " + response.data.Country);
+            console.log("MOVIE LANGUAGE: " + response.data.Language);
+            console.log("MOVIE CAST: " + response.data.Actors);
+            console.log("MOVIE PLOT: " + response.data.Plot);
+            console.log(bottomLine);
+        });
 
 }
 
