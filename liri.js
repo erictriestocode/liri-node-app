@@ -38,7 +38,8 @@ if (input[2] === "movie-this") {
     movieSearch(userInput);
 }
 if (input[2] === "do-what-it-says") {
-    console.log("DEBUG: DO MY WORK BITCH")
+    console.log("DEBUG: RandomFile!")
+    randomFile();
 }
 
 
@@ -116,8 +117,8 @@ function movieSearch(movie) {
     // Taken heavily from 10.2 levelTwoOmdbInteractive.js activity and modified for this assignment
     var movieInput = movie;
 
-    if(!movieInput){
-        movieInput = "xXx";
+    if (!movieInput) {
+        movieInput = "Mr. Nobody";
     }
 
     var queryUrl = "http://www.omdbapi.com/?t=" + movieInput + "&y=&plot=short&apikey=trilogy";
@@ -142,8 +143,25 @@ function movieSearch(movie) {
 }
 
 // function for doing what it says
-// Named it Alfred after everyone's favorite butler
-function alfred(butler) {
-    // need to install fs
-    // spotifySearch();
+// Heavily influenced by 10.2 Activity 12 from main class Repositiory
+function randomFile(butler) {
+    fs.readFile("random.txt", "utf8", function (error, data) {
+        if (error) {
+            console.log(error);
+        }
+        console.log(data);
+
+        var fileInput = data.split(",");
+        console.log(fileInput);
+
+        for(i=0;i<fileInput.length;i++){
+            newCommand = process.argv.push(fileInput[i]);
+        }
+        
+        console.log(newCommand);
+
+
+        //    var newCommand = process.argv.push(fileInput);
+        //    console.log(newCommand);
+    });
 }
