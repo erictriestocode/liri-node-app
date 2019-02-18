@@ -60,9 +60,9 @@ function concertSearch(artist) {
 
 }
 
-// FUnction for searching for songs on Spotify
+// Function for searching for songs on Spotify
 function spotifySearch() {
-
+    // I'll get here I promise
 }
 
 // function for searching for Movies on OMDB
