@@ -26,19 +26,19 @@ console.log("DEBUG: You have this many inputs: " + inputLength);
 // Guess I could have used switch statements here ¯\_(ツ)_/¯
 
 if (input[2] === "concert-this") {
-    console.log("DEBUG: Concerts!")
+    // console.log("DEBUG: Concerts!")
     concertSearch(userInput);
 }
 if (input[2] === "spotify-this-song") {
-    console.log("DEBUG: Spotify!")
+    // console.log("DEBUG: Spotify!")
     spotifySearch(userInput);
 }
 if (input[2] === "movie-this") {
-    console.log("DEBUG: Movies?")
+    // console.log("DEBUG: Movies?")
     movieSearch(userInput);
 }
 if (input[2] === "do-what-it-says") {
-    console.log("DEBUG: RandomFile!")
+    // console.log("DEBUG: RandomFile!")
     randomFile();
 }
 
@@ -52,7 +52,7 @@ function concertSearch(artist) {
     var concertDate;
 
 
-    console.log("DEBUG: you have passed in: " + artist)
+    // console.log("DEBUG: you have passed in: " + artist)
 
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
         .then(function (response) {
@@ -68,9 +68,7 @@ function concertSearch(artist) {
             console.log("EVENT DATE: " + concertDate);
             console.log(bottomLine);
 
-            // console Name of Venue
-            // console venue location
-            // console date of the event
+       
         }).catch(function (error) {
             console.log(error);
         });
@@ -93,7 +91,7 @@ function spotifySearch(song) {
     spotify
         .search({ type: 'track', query: userSong })
         .then(function (response) {
-            console.log("DEBUG: " + userSong)
+            // console.log("DEBUG: " + userSong)
 
             // Again will clean this up at another point
             console.log(topLine);
@@ -123,7 +121,7 @@ function movieSearch(movie) {
 
     var queryUrl = "http://www.omdbapi.com/?t=" + movieInput + "&y=&plot=short&apikey=trilogy";
 
-    console.log(queryUrl);
+    // console.log(queryUrl);
 
     axios.get(queryUrl).then(
         function (response) {
@@ -160,8 +158,11 @@ function randomFile(butler) {
         // }
 
         // SUPREMELY HACKY VERSION!
-        var newCommand = "node liri.js " + fileInput[0] + " " + fileInput[1] 
-        console.log(newCommand);
+        var newCommand = "node liri.js " + fileInput[0] + " " + fileInput[1];
+
+        console.log(topLine);
+        console.log("DEBUG: Command Generated: " + newCommand);
+        console.log(bottomLine);
 
         // here Im 
         //    var newCommand = process.argv.push(fileInput);
