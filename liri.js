@@ -6,7 +6,8 @@ require("dotenv").config();
 var keys = require("./keys.js");
 var axios = require("axios");
 var fs = require("fs");
-var spotify = require("node-spotify-api");
+var Spotify = require("node-spotify-api");
+
 
 var input = process.argv;
 var inputLength = process.argv.length - 2; //subtracting first two arguments(node path and file path)
@@ -77,9 +78,11 @@ function concertSearch(artist) {
 // Function for searching for songs on Spotify
 function spotifySearch(song) {
     var userSong = song;
+    var spotify = new Spotify(keys.spotify);
+
 
     if (!userSong) {
-        userSong = "Ace of Bass" //I think this is spelled properly? Discussed in class that using the band name instead actually gave the desired results
+        userSong = "Ace of Bass" //I think this is spelled properly? If only there was a website I could go to and check. Discussed in class that using the band name instead actually gave the desired results.
     }
 
     // From Spotify Node API Documentation
@@ -88,7 +91,10 @@ function spotifySearch(song) {
     spotify
         .search({ type: 'track', query: userSong })
         .then(function (response) {
-            console.log(response);
+            console.log("DEBUG: " + userSong)
+            console.log(response.tracks.items[0]);
+
+            console.log
         })
         .catch(function (err) {
             console.log(err);
