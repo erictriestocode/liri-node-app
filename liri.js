@@ -20,7 +20,8 @@ console.log("DEBUG: You have this many inputs: " + inputLength);
 
 if (input[2] === "concert-this") {
     console.log("DEBUG: Concerts!")
-    var band = "queen";
+    var band = "blink-182"; //     var artistName = process.argv.slice(3).join(" ");
+
     concertSearch(band);
 }
 if (input[2] === "spotify-this-song") {
@@ -47,7 +48,7 @@ function concertSearch(artist) {
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
         .then(function(response) {
             // console.log(response);
-            venueName = response[0].data;
+            venueName = response.data.length;
             // venueLocationc = response.data.
                 console.log("Response is: " + venueName);
 
