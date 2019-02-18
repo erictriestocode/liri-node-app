@@ -21,29 +21,32 @@ var bottomLine = "\n*****************************************"
 console.log("DEBUG: ***** WELCOME TO LIRI *****");
 console.log("DEBUG: you have entered: " + input[2] + " and " + userInput);
 console.log("DEBUG: You have this many inputs: " + inputLength);
+appLogic(userInput)
+
+//  ***** FUNCTIONS *****
 
 // If statements to parse input and direct to the correct functions
 // Guess I could have used switch statements here ¯\_(ツ)_/¯
+function appLogic(args) {
+    if (input[2] === "concert-this") {
+        // console.log("DEBUG: Concerts!")
+        concertSearch(args);
+    }
+    if (input[2] === "spotify-this-song") {
+        // console.log("DEBUG: Spotify!")
+        spotifySearch(args);
+    }
+    if (input[2] === "movie-this") {
+        // console.log("DEBUG: Movies?")
+        movieSearch(args);
+    }
+    if (input[2] === "do-what-it-says") {
+        // console.log("DEBUG: RandomFile!")
+        randomFile();
+    }
+};
 
-if (input[2] === "concert-this") {
-    // console.log("DEBUG: Concerts!")
-    concertSearch(userInput);
-}
-if (input[2] === "spotify-this-song") {
-    // console.log("DEBUG: Spotify!")
-    spotifySearch(userInput);
-}
-if (input[2] === "movie-this") {
-    // console.log("DEBUG: Movies?")
-    movieSearch(userInput);
-}
-if (input[2] === "do-what-it-says") {
-    // console.log("DEBUG: RandomFile!")
-    randomFile();
-}
 
-
-//  ***** FUNCTIONS *****
 
 // Function for searching for concerts
 function concertSearch(artist) {
@@ -68,7 +71,7 @@ function concertSearch(artist) {
             console.log("EVENT DATE: " + concertDate);
             console.log(bottomLine);
 
-       
+
         }).catch(function (error) {
             console.log(error);
         });
@@ -143,6 +146,7 @@ function movieSearch(movie) {
 // function for doing what it says
 // Heavily influenced by 10.2 Activity 12 from main class Repositiory
 // Not quite done, but basically the idea was to take the data pulled from the file, append it to the argv command, have that be the new command, and enter it.
+// Tried to functionalize the input logic but not quite wrapping my head around it
 function randomFile(butler) {
     fs.readFile("random.txt", "utf8", function (error, data) {
         if (error) {
@@ -163,6 +167,7 @@ function randomFile(butler) {
         console.log(topLine);
         console.log("DEBUG: Command Generated: " + newCommand);
         console.log(bottomLine);
+        // appLogic(fileInput[0]);
 
         // here Im 
         //    var newCommand = process.argv.push(fileInput);
