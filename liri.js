@@ -144,6 +144,7 @@ function movieSearch(movie) {
 
 // function for doing what it says
 // Heavily influenced by 10.2 Activity 12 from main class Repositiory
+// Not quite done, but basically the idea was to take the data pulled from the file, append it to the argv command, have that be the new command, and enter it.
 function randomFile(butler) {
     fs.readFile("random.txt", "utf8", function (error, data) {
         if (error) {
@@ -154,13 +155,15 @@ function randomFile(butler) {
         var fileInput = data.split(",");
         console.log(fileInput);
 
-        for(i=0;i<fileInput.length;i++){
-            newCommand = process.argv.push(fileInput[i]);
-        }
-        
+        // for(i=0;i<fileInput.length;i++){
+        //     newCommand = process.argv.push(fileInput[i]);
+        // }
+
+        // SUPREMELY HACKY VERSION!
+        var newCommand = "node liri.js " + fileInput[0] + " " + fileInput[1] 
         console.log(newCommand);
 
-
+        // here Im 
         //    var newCommand = process.argv.push(fileInput);
         //    console.log(newCommand);
     });
