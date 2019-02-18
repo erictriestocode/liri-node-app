@@ -6,7 +6,7 @@ It can:
 * search for the next concert that your favorite band is playing
 * get song information for a song you have stuck in your head
 * Pull information on a movie that you would like to watch(or for cheating in trivia)
-* UPCOMING: automate Liri by pre-writing commands for it to run
+* UPCOMING: automate Liri by pre-writing commands for it to run in a text file
 * UPCOMING: full application logging to text file for history/debugging
 ## Requirements
 * Node.js
@@ -26,4 +26,4 @@ The available commands are below
 ### Other Notes
 * It helps to test with bands that are actually touring so you don't waste 5 hours in a rage wondering why your code isn't working while looking for upcoming concerts for Queen
 * Need to introduce Logging features to the application
-* would also like to introduce a built in help function(man page)
+* would also like to introduce a built in help function(essentially a man page)
