@@ -27,3 +27,4 @@ The available commands are below
 * It helps to test with bands that are actually touring so you don't waste 5 hours in a rage wondering why your code isn't working while looking for upcoming concerts for Queen
 * Need to introduce Logging features to the application
 * would also like to introduce a built in help function(essentially a man page)
+* Introduce moment npm package to better parse times for concerts
