@@ -47,7 +47,7 @@ function concertSearch(artist) {
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
         .then(function(response) {
             // console.log(response);
-            venueName = response.id;
+            venueName = response[0].data;
             // venueLocationc = response.data.
                 console.log("Response is: " + venueName);
 
