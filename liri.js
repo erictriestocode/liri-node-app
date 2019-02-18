@@ -9,7 +9,12 @@ var fs = require("fs");
 
 var input = process.argv;
 var inputLength = process.argv.length - 2; //subtracting first two arguments(node path and file path)
+var userInput = process.argv.slice(3).join(" ");; //     var artistName = process.argv.slice(3).join(" ");
 
+
+// Separators for the output to make them easier to find
+var topLine = "*****************************************\n"
+var bottomLine = "\n*****************************************"
 
 console.log("DEBUG: ***** WELCOME TO LIRI *****");
 console.log("DEBUG: you have entered: " + input[2] + " and " + input[3]);
@@ -20,9 +25,7 @@ console.log("DEBUG: You have this many inputs: " + inputLength);
 
 if (input[2] === "concert-this") {
     console.log("DEBUG: Concerts!")
-    var band = "blink-182"; //     var artistName = process.argv.slice(3).join(" ");
-
-    concertSearch(band);
+    concertSearch(userInput);
 }
 if (input[2] === "spotify-this-song") {
     console.log("DEBUG: Spotify!")
@@ -41,16 +44,24 @@ if (input[2] === "do-what-it-says") {
 function concertSearch(artist) {
     var venueName;
     var venueLocation;
-    var concertdate;
+    var concertDate;
+
 
     console.log("DEBUG: you have entered: " + artist)
 
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
         .then(function(response) {
-            // console.log(response);
-            venueName = response.data.length;
+            venueName = response.data[0].venue.name;
+            venueLocation = response.data[0].venue.city;
+            concertDate = response.data[0].datetime;
+
             // venueLocationc = response.data.
-                console.log("Response is: " + venueName);
+                console.log (topLine);
+                console.log("CONCERT INFORMATION FOR " + artist);
+                console.log("NEXT EVENT: " + venueName);
+                console.log("EVENT LOCATION: " + venueLocation);
+                console.log("EVENT DATE: " + concertDate);
+                console.log(bottomLine);
 
             // console Name of Venue
             // console venue location
