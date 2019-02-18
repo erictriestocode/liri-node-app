@@ -92,9 +92,15 @@ function spotifySearch(song) {
         .search({ type: 'track', query: userSong })
         .then(function (response) {
             console.log("DEBUG: " + userSong)
-            console.log(response.tracks.items[0]);
 
-            console.log
+            // Again will clean this up at another point
+            console.log(topLine);
+            console.log("SONG NAME: " + response.tracks.items[0].name);
+            console.log("ARTIST NAME: " + response.tracks.items[0].artists[0].name);
+            console.log("ALBUM NAME: " + response.tracks.items[0].album.name);
+            console.log("PREVIEW LINK: " + response.tracks.items[0].external_urls.spotify);
+
+            console.log(bottomLine);
         })
         .catch(function (err) {
             console.log(err);
